@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Texto o Ticket a Tabla - Weicheng Pan Lin</title>
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        // Verifica la autenticación al cargar la página
+        window.onload = function() {
+            const authenticated = localStorage.getItem('authenticated');
+            if (authenticated !== 'true') {
+                window.location.href = 'login.html';
+            }
+        };
+    </script>
+</head>
+<body>
+    <header>
+        <h1 id="mainTitle">Texto o Ticket a Tabla</h1>
+        <h2 id="subtitle">Hecho por: Weicheng Pan Lin</h2>
+        <div id="languageSwitcher">
+            <label for="pageLanguageSelect">Seleccionar Idioma:</label>
+            <select id="pageLanguageSelect" onchange="translatePage()">
+                <option value="es">Español</option>
+                <option value="en">Inglés</option>
+                <option value="chi_sim">Chino Simplificado</option>
+                <option value="chi_tra">Chino Tradicional</option>
+            </select>
+        </div>
+    </header>
+    <main>
+        <section id="options">
+            <button onclick="showSection('ticket')" id="ticketButton">Ticket a Tabla</button>
+            <button onclick="showSection('text')" id="textButton">Texto a Tabla</button>
+        </section>
+        <section id="ticket" class="hidden">
+            <h3 id="ticketSectionTitle">Sube una foto de un ticket</h3>
+            <input type="file" id="ticketInput" accept="image/*">
+            <select id="ticketLanguageSelect">
+                <option value="eng">Inglés</option>
+                <option value="spa">Español</option>
+                <option value="fra">Francés</option>
+                <option value="deu">Alemán</option>
+                <option value="ita">Italiano</option>
+                <option value="por">Portugués</option>
+                <option value="rus">Ruso</option>
+                <option value="chi_sim">Chino Simplificado</option>
+                <option value="chi_tra">Chino Tradicional</option>
+                <option value="jpn">Japonés</option>
+                <option value="kor">Coreano</option>
+            </select>
+            <button onclick="processTicket()" id="processTicketButton">Procesar Ticket</button>
+            <div id="ticketResult"></div>
+        </section>
+        <section id="text" class="hidden">
+            <h3 id="textSectionTitle">Introduce un texto</h3>
+            <textarea id="textInput" rows="10" cols="50"></textarea>
+            <select id="textLanguageSelect">
+                <option value="eng">Inglés</option>
+                <option value="spa">Español</option>
+                <option value="fra">Francés</option>
+                <option value="deu">Alemán</option>
+                <option value="ita">Italiano</option>
+                <option value="por">Portugués</option>
+                <option value="rus">Ruso</option>
+                <option value="chi_sim">Chino Simplificado</option>
+                <option value="chi_tra">Chino Tradicional</option>
+                <option value="jpn">Japonés</option>
+                <option value="kor">Coreano</option>
+            </select>
+            <button onclick="processText()" id="processTextButton">Procesar Texto</button>
+            <div id="textResult"></div>
+        </section>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/tesseract.js@4.0.2/dist/tesseract.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
+
+
+
+
+
+

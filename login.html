@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio de Sesión</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="languageSwitcher">
+        <label for="pageLanguageSelect" id="languageLabel">Seleccionar Idioma:</label>
+        <select id="pageLanguageSelect" onchange="translatePage()">
+            <option value="en">Inglés</option>
+            <option value="es">Español</option>
+            <option value="fr">Francés</option>
+            <option value="de">Alemán</option>
+            <option value="it">Italiano</option>
+            <option value="pt">Portugués</option>
+            <option value="ru">Ruso</option>
+            <option value="ja">Japonés</option>
+            <option value="ko">Coreano</option>
+            <option value="chi_sim">Chino Simplificado</option>
+            <option value="chi_tra">Chino Tradicional</option>
+        </select>
+    </div>
+
+    <div id="loginContainer">
+        <h1 id="loginTitle">Inicio de Sesión</h1>
+        <input type="password" id="passwordInput" placeholder="Introduce la contraseña">
+        <button onclick="checkPassword()" id="loginButton">Ingresar</button>
+        <p id="errorMessage" style="color: red;"></p>
+    </div>
+
+    <script>
+        function checkPassword() {
+            const password = document.getElementById('passwordInput').value;
+            const correctPassword = 'yipan222';
+
+            if (password === correctPassword) {
+                localStorage.setItem('authenticated', 'true');
+                window.location.href = 'index.html';
+            } else {
+                document.getElementById('errorMessage').innerText = 'Contraseña incorrecta. Inténtalo de nuevo.';
+            }
+        }
+
+        // Traducción
+        const translations = {
+            en: {
+                loginTitle: "Login",
+                loginButton: "Log In",
+                languageLabel: "Select Language"
+            },
+            es: {
+                loginTitle: "Inicio de Sesión",
+                loginButton: "Ingresar",
+                languageLabel: "Seleccionar Idioma"
+            },
+            fr: {
+                loginTitle: "Connexion",
+                loginButton: "Connexion",
+                languageLabel: "Sélectionner la Langue"
+            },
+            de: {
+                loginTitle: "Anmeldung",
+                loginButton: "Anmelden",
+                languageLabel: "Sprache auswählen"
+            },
+            it: {
+                loginTitle: "Accesso",
+                loginButton: "Accesso",
+                languageLabel: "Seleziona Lingua"
+            },
+            pt: {
+                loginTitle: "Iniciar sessão",
+                loginButton: "Iniciar sessão",
+                languageLabel: "Selecione o Idioma"
+            },
+            ru: {
+                loginTitle: "Вход",
+                loginButton: "Войти",
+                languageLabel: "Выбрать язык"
+            },
+            ja: {
+                loginTitle: "ログイン",
+                loginButton: "ログイン",
+                languageLabel: "言語を選択"
+            },
+            ko: {
+                loginTitle: "로그인",
+                loginButton: "로그인",
+                languageLabel: "언어 선택"
+            },
+            chi_sim: {
+                loginTitle: "登录",
+                loginButton: "登录",
+                languageLabel: "选择语言"
+            },
+            chi_tra: {
+                loginTitle: "登錄",
+                loginButton: "登錄",
+                languageLabel: "選擇語言"
+            }
+        };
+
+        function translatePage() {
+            const language = document.getElementById('pageLanguageSelect').value;
+            const translation = translations[language];
+
+            document.getElementById('loginTitle').innerText = translation.loginTitle;
+            document.getElementById('loginButton').innerText = translation.loginButton;
+            document.getElementById('languageLabel').innerText = translation.languageLabel;
+        }
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
